@@ -1,6 +1,7 @@
 import Checkbox from "./Checkbox";
 import "./Form.css";
 import React, { useState, useEffect } from "react";
+import "./Button.css";
 
 function Form() {
   const [checkedCount, setCheckedCount] = useState(0);
@@ -13,15 +14,12 @@ function Form() {
     }
   };
 
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (checkedCount === 3 || checkedCount === 4) {
-      // Submit the form
-      console.log("Form submitted!");
-    } else {
-      // Don't submit the form and show an error message
-      alert("choose minimum 3 and maximum 4 students");
-    }
+    // Submit form logic here
+    setIsSubmitted(true);
   };
 
   const [students, setStudents] = useState([]);
@@ -36,33 +34,35 @@ function Form() {
     setStudents(jsonData);
   };
   return (
-    <div className="form">
-      {students.map((student) => (
-        //test
+    <>
+      <form className="form" onSubmit={handleSubmit}>
+        {students.map((student) => (
+          <Checkbox {...student} isCheckProp={handleCheckBoxCheck}></Checkbox>
+        ))}
 
-        //test
-
-        <Checkbox
-          // name={student.name}
-          // UID={student.UID}
-          // evaluated={student.evaluated}
-          {...student}
-          isCheckProp={handleCheckBoxCheck}
-        ></Checkbox>
-      ))}
-      <button onSubmit={handleSubmit} type="submit" value="Submit"></button>
-      {checkedCount >= 3 ? (
-        checkedCount <= 4 ? (
-          <button type="submit" form="form1" value="Submit">
-            Submit
-          </button>
+        {checkedCount >= 3 ? (
+          checkedCount <= 4 ? (
+            <button
+              onSubmit={handleSubmit}
+              type="submit"
+              form="form1"
+              value="Submit"
+              className="Button"
+              onClick={handleSubmit}
+            >
+              Submit
+            </button>
+          ) : (
+            console.log("choose 4 students maximum")
+          )
         ) : (
-          console.log("choose 4 students maximum")
-        )
-      ) : (
-        console.log("choose 3 students minumum")
+          console.log("choose 3 students minumum")
+        )}
+      </form>
+      {isSubmitted && (
+        <div className="success">Form submitted successfully!</div>
       )}
-    </div>
+    </>
   );
 }
 
