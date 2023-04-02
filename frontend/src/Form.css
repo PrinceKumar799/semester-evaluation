@@ -1,0 +1,7 @@
+.form {
+  width: 50%;
+  height: 100%;
+  float: left;
+  background: #282c34;
+  overflow: scroll;
+}

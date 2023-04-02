@@ -1,0 +1,6 @@
+.checkbox {
+  float: inline-start;
+  border: 2px dotted #00f;
+  display: block;
+  background: #8fe648;
+}

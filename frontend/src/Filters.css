@@ -1,0 +1,23 @@
+.filter {
+  position: fixed;
+  top: 10;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(34, 74, 182, 0.2);
+  z-index: 999;
+}
+
+.filter-label {
+  font-weight: bold;
+}
+
+.filter select {
+  margin-left: 10px;
+}
+
+.filter h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
