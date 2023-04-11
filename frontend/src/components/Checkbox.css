@@ -1,0 +1,20 @@
+.checkbox {
+  float: inline-start;
+  border: 2px dotted #00f;
+  display: block;
+  background: #8fe648;
+}
+.button-add {
+  align-self: center;
+  text-align: center;
+  border: 2px solid rgb(41, 246, 0);
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100px;
+  height: 30px;
+  border-radius: 25px;
+}
+.input {
+  align-self: center;
+  margin-left: 5px;
+}
