@@ -3,11 +3,26 @@ const { Student } = require("../model/studentModel");
 const evaluateStudent = async (req, res) => {
   const uid = req.body.UID;
   try {
-    const product = await Student.findOneAndUpdate(
+    const student = await Student.findOneAndUpdate(
       { UID: uid },
       { ...req.body, evaluated: true }
     );
-    res.status(201).send(product);
+    res.status(201).send(student);
+  } catch {
+    console.log(err);
+    res.status(400).send(err);
+  }
+  console.log(req.body);
+};
+
+const unevaluateStudent = async (req, res) => {
+  const uid = req.body.UID;
+  try {
+    const student = await Student.findOneAndUpdate(
+      { UID: uid },
+      { ...req.body, evaluated: false }
+    );
+    res.status(201).send(student);
   } catch {
     console.log(err);
     res.status(400).send(err);
@@ -42,4 +57,5 @@ module.exports = {
   evaluateStudent,
   addStudent,
   getUnevaluatedStudents,
+  unevaluateStudent,
 };

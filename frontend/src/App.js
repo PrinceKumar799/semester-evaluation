@@ -1,5 +1,5 @@
 import "./App.css";
-import Filters from "./Filters";
+import Filters from "./components/Filters";
 
 function App() {
   return (
